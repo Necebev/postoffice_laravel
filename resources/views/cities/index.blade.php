@@ -12,7 +12,7 @@
 <ul>
     @foreach($cities as $city)
     <li>
-        {{$city->name}} {{$city->zip_code}} {{$city->population}} {{$city->county_id}}
+        {{$city->name}} {{$city->zip_code}} {{$city->population}} {{$city->getCounty($city->county_id)}}
         <a href="{{route('cities.edit',$city->id)}}">Edit</a>
         <form action="{{route('cities.destroy', $city->id)}}" method="post">
             @csrf

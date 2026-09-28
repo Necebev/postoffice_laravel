@@ -13,6 +13,7 @@
 <ul>
     @foreach($counties as $county)
     <li>{{$county->name}}
+        {{$county->getPopulation()}}
         <img src="{{$county->badge}}"></img>
         <a href="{{route('counties.edit',$county->id)}}">Edit</a>
         <form action="{{route('counties.destroy', $county->id)}}" method="post">
