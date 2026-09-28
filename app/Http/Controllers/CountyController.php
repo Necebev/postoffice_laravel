@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\County;
+use App\Models\City;
 use Illuminate\Http\Request;
 
 class CountyController extends Controller
@@ -36,7 +37,7 @@ class CountyController extends Controller
         $county->badge = $request->badge;
         $county->save();
 
-        return redirect()->route('counties.index')->with('success', 'Sikeresen mentve');
+        return redirect()->route('counties.index')->with('success', 'Sikeres mentés');
     }
 
     /**
@@ -44,7 +45,8 @@ class CountyController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $county = County::find($id);
+        return view('counties.show', compact('county'));
     }
 
     /**
@@ -52,7 +54,8 @@ class CountyController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $county = County::find($id);
+        return view('counties.edit', compact('county'));
     }
 
     /**
@@ -60,7 +63,13 @@ class CountyController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $request->validate(['name'=>'required']);
+        $county = County::find($id);
+        $county->name = $request->name;
+        $county->badge = $request->badge;
+        $county->save();
+
+        return redirect()->route('counties.index')->with('success', 'Sikeres módosítás');
     }
 
     /**
@@ -68,6 +77,9 @@ class CountyController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $county = County::find($id);
+        $county->delete();
+
+        return redirect()->route('counties.index')->with('success','Sikeres törlés');
     }
 }

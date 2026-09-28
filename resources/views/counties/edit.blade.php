@@ -1,13 +1,13 @@
 @extends('layout')
 
 @section('content')
-    <h1>Új megye</h1>
-    <form action="{{ route('counties.store') }}" method="post">
+    <form action="{{ route('counties.update',$county->id ) }}" method="post">
     @csrf
+    @method('PUT')
     <fieldset>
         <label for="name">Megye név</label>
-        <input type="text" name="name" id="name">
-        <label for="badge">Megye név</label>
+        <input type="text" name="name" id="name" value="{{ old('name', $county->name)}}">
+        <label for="badge">Címer</label>
         <input type="text" name="badge" id="badge">
     </fieldset>
     <button type="submit">Mentés</button>
