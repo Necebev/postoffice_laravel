@@ -9,7 +9,14 @@
 @endif
 <a href="{{route('cities.index')}}">Cities</a>
 <a href="{{route('counties.create')}}">Create</a>
-
+<a href="{{route('counties.index', ['sort_by'=>'name','sort_dir'=>'asc'])}}" title="ascending">+</a>
+<a href="{{route('counties.index', ['sort_by'=>'name','sort_dir'=>'desc'])}}" title="descending">-</a>
+<form action="{{route('counties.index')}}">
+            <input type="text" placeholder="Megye" name="search">
+            <button>
+                Keresés
+            </button>
+        </form>
 <ul>
     @foreach($counties as $county)
     <li>{{$county->name}}
@@ -24,5 +31,7 @@
     </li>
     @endforeach
 </ul>
+
+
 
 @endsection

@@ -1,4 +1,167 @@
-body {
-    background: black;
-    color: #fff;
+* {
+    box-sizing: border-box;
 }
+
+body {
+    margin: 0;
+    padding: 40px 20px;
+    font-family: Arial, Helvetica, sans-serif;
+    background: #222222;
+    color: #222;
+    line-height: 1.5;
+}
+
+img {
+    max-width: 10vw;
+}
+
+main,
+.container {
+    width: 100%;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+
+h1, h2, h3 {
+    margin-top: 0;
+    color: #1f2937;
+}
+
+a {
+    color: #2563eb;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+a[href] {
+    display: inline-block;
+    margin-right: 12px;
+}
+
+
+form {
+    margin: 20px 0;
+}
+
+fieldset {
+    border: 1px solid #d1d5db;
+    border-radius: 8px;
+    background: #fff;
+    padding: 24px;
+    margin-bottom: 20px;
+}
+
+label {
+    display: block;
+    margin: 14px 0 6px;
+    font-weight: 600;
+    color: #374151;
+}
+
+input,
+select,
+textarea {
+    width: 100%;
+    padding: 10px 12px;
+    border: 1px solid #cbd5e1;
+    border-radius: 6px;
+    background: #fff;
+    color: #111827;
+    font-size: 15px;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+    outline: none;
+    border-color: #2563eb;
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
+}
+
+
+button {
+    border: none;
+    border-radius: 6px;
+    padding: 10px 18px;
+    background: #2563eb;
+    color: #fff;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s, transform 0.1s;
+}
+
+button:hover {
+    background: #1d4ed8;
+}
+
+button:active {
+    transform: translateY(1px);
+}
+
+
+ul {
+    list-style: none;
+    padding: 0;
+    margin: 25px 0;
+}
+
+li {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 16px;
+    margin-bottom: 10px;
+    background: #fff;
+    border: 1px solid #e5e7eb;
+    border-radius: 8px;
+}
+
+li form {
+    margin: 0;
+}
+
+
+li button {
+    background: #dc2626;
+}
+
+li button:hover {
+    background: #ff5a5a;
+}
+
+
+.alert {
+    padding: 12px 16px;
+    margin-bottom: 20px;
+    border-radius: 6px;
+    font-weight: 500;
+}
+
+.alert-success {
+    background: #dcfce7;
+    border: 1px solid #86efac;
+    color: #166534;
+}
+
+
+@media (max-width: 600px) {
+    body {
+        padding: 20px 12px;
+    }
+
+    li {
+        flex-wrap: wrap;
+    }
+
+    li form {
+        width: 100%;
+    }
+}
+

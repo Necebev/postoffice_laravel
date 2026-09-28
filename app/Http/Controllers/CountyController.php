@@ -13,7 +13,17 @@ class CountyController extends Controller
      */
     public function index()
     {
-        $counties = County::all();
+        $sort_by = request()->query('sort_by', 'name');
+        $sort_dir = request()->query('sort_dir', 'asc');
+        $searchText = request()->input('search');
+
+        if (!empty($searchText)){
+            $counties = County::where('name', 'like', '%' . $searchText . '%')->get();
+        }
+        else{
+            $counties = County::all();
+        }
+        // $counties = County::orderBy($sort_by, $sort_dir)->paginate(2);
         return view('counties.index', compact('counties'));
     }
 

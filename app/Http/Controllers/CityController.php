@@ -13,7 +13,23 @@ class CityController extends Controller
      */
     public function index()
     {
-        $cities = City::all();
+        $searchText = request()->input('search');
+        $searchCounty = request()->input('county');
+
+        if (!empty($searchCounty)){
+                $cities = City::where('name', 'like', '%' . $searchText . '%')->where('county_id', '=', $searchCounty)->paginate(10);
+        }
+        else{
+            $cities = City::where('name', 'like', '%' . $searchText . '%')->paginate(10);
+        }
+
+        // $counties = County::all();
+        
+        // return view('cities.index', compact('cities', 'counties'));
+
+        $sort_by = request()->query('sort_by', 'name');
+        $sort_dir = request()->query('sort_dir', 'asc');
+        // $cities = City::orderBy($sort_by, $sort_dir)->paginate(2);
         $counties = County::all();
         return view('cities.index', compact('cities', 'counties'));
     }

@@ -19,6 +19,6 @@
         </select>
     </fieldset>
     <button type="submit">Mentés</button>
-</form:action>
+</form>
 
 @endsection
